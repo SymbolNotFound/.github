@@ -1,4 +1,4 @@
-## Hi there 👋 I'll come back and fill in some organization-level descriptions, including member bios
+# This organization develops GGDL (Graphics & Game Description Language) and GGP (General Game Playing) software
 
 ```mermaid
 graph LR;
