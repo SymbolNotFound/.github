@@ -1,4 +1,4 @@
-# This organization develops GGDL (Graphics & Game Description Language) and GGP (General Game Playing) software
+# SymbolNotFound develops General Game Playing (GGP) software
 
 ```mermaid
 graph LR;
