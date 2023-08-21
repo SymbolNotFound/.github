@@ -73,6 +73,11 @@ compiled into an intermediate notation that the service can snapshot and read
 back in when play resumes.
 This repo has github actions for staging the GM to be released.
 
+The protocol deviates from that of IGGPC described in [GDL](https://www.cs.uic.edu/~hinrichs/papers/love2006general.pdf),
+mainly so that it can be easier for a human to interact with via a browser,
+but it should be possible to create a compatibility layer to satisfy any bot
+that had been developed specifically for IGGPC or [Stanford's GGP](games.ggp.org).
+
 ### **ggp-db**:
 
 Maintains the list of games, game metadata and game history for
