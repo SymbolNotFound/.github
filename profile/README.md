@@ -14,21 +14,51 @@ but it covers nearly as broad an area:
 https://docs.google.com/spreadsheets/d/1Qcg707g7wGSvr1XKr5UNmLDlcYtoZ3GTNwtUPL3bo5U
 
 The goal is to implement several of these (as many as we can!) in a common grounding
--- a logic-language extension of GDL that includes board, equipment, deck, dice, etc.
-semantics.  The initial motivation was to have a system from which a human-friendly
+-- a logic-language extension of GDL with added semantics for boards, equipment, dice,
+decks, etc.  The initial motivation was to have a system from which a human-friendly
 game interface could be code-generated (including hints for assistive technology, as
-well as the entire client/server protocol for network play).  The motivation has also
-blossomed into a desire to build the venue where intelligence and reasoning engines
-can compete.  Though AI have mastered Chess and Go, even learning games without being
-told any specific strategy or even explicit rules, these systems have required many
-hundred hours and enormous compute resources to learn one game.  The most general
-language models could probably score well in a quiz game or word-based game, and
-even generate some code to play tic-tac-toe, but they aren't nearly ready to play at
-any game with arbitrary rules and goals.  Will a stronger reasoning engine emerge?
-A true AGI could be expected to develop a competitive interface, I think.  In the
-meantime, I have a few subpar engines that have relative strengths and invite others
-to contribute competitors when the site is launched later this year!
+well as the entire client/server protocol for network play), along with a playable AI.
+Games can be played (human | AI) vs (human | AI) for all the roles defined in the game.
 
+The motivation has expanded to include other reasons -- there are games on that list
+which have been almost entirely lost, a couple of games are only guesses, their rules
+reverse-engineered from scant evidence discovered in archeological finds.  Some games
+have dozens or hundreds of variants only a handful of which have been converted into a
+form where they might be preserved.  Many games exist in one platform/environment but
+not anywhere else, and typically not in a declarative/logical representation but in a
+general purpose procedural language (if the original source is available at all).
+Building a general game description language and collection of games is another way to
+help preserve games, both ancient and modern, and make them widely accessible.
+
+The initial motivation of code-generating the play-protocol and interface was also to
+provide a testing ground for the design and fine-tuning of new games.  Playtesting a
+new game takes precious (seasoned game player) hours and must be repeated after every
+gameplay-balance adjustment.  By defining the game rules as logical relations, there
+is the immediate benefit of avoiding an entire class of bugs from accidents in editing
+the client and server implementations.  There is the ability to play against an AI that
+is at least capable of legal moves and makes occasionally clever moves.  There are
+automated metrics that can be derived from equipment & rule complexity, the initiative
+advantage, difficulty, determinism, validity, convergence, etc. that can help a game
+designer.  Some metrics are determined from self-play, these same metrics are latent
+features which playtesting attempts to derive.  Some automated playtesting can save
+hours or days of unbalanced play, per game being developed!  With the appropriate
+measures, the system could even give guidance where equipment or rules are particularly
+unfair.
+
+This motivation expanded also into a desire to build the venue where intelligence
+and reasoning engines can compete.  Although AI have mastered very deep games such
+as Chess and Go, even learning games without being told any specific strategy or
+even the explicit rules, these systems have required many hundred hours and enormous
+compute resources to learn one game.  The most general language models could probably
+score well in a quiz game or word-based game, and even generate some code to play
+tic-tac-toe, but they aren't nearly ready to play at any game with arbitrary rules
+and goals.  Will a stronger reasoning engine emerge?  A true AGI could be expected
+to develop a competitive interface, I think.  In the meantime, I have a few sub-par
+engines that have relative strengths and invite others to contribute competitors
+when the site is launched later this year!
+
+
+## Repository dependencies (arrow indicates direction of import into)
 
 ```mermaid
 graph LR;
