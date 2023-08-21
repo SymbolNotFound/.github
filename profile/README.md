@@ -1,4 +1,6 @@
-# Currently developing General Game Playing (GGP) software
+# Symbol Not Found
+
+Currently developing General Game Playing (GGP) software and code generating tools.
 
 After a rather broad survey of what defines a game, including single-player puzzles
 and games involving 2 or more players, games with and without chance elements, games
@@ -42,7 +44,7 @@ graph LR;
 
 ## Summary of repositories
 
-### **ggdl**: Generative Game Description Language
+### [ggdl]: Generative Game Description Language
 
 A parser and compiler for .ggd source files (GGDL's file type), a superset of
 GDL and compatible with several of the language's variants.  It can compile
@@ -51,7 +53,7 @@ Contains a parser/compiler for both golang and TypeScript, developed in tandem.
 This repo has github actions for compiling the parser and benchmarking its parse
 times for priority operations (e.g. ground relations used in player moves).
 
-### **ggdl-api**:
+### [ggdl-api]
 
 The common protocols and data types that all players (human and
 AI), as well as game master and lobby interfaces, use to interact.  These are
@@ -62,7 +64,7 @@ there are benefits to building clients that only need to depend on the API.
 This repo has no github actions, but has hooks into build and test that check
 for internal consistency.
 
-### **ggdl-gm**:
+### [ggdl-gm]
 
 A golang service adhering to the Game Manager for hosting games.
 It coordinates the simultaneous play of moves, shares game updates with players
@@ -78,7 +80,7 @@ mainly so that it can be easier for a human to interact with via a browser,
 but it should be possible to create a compatibility layer to satisfy any bot
 that had been developed specifically for IGGPC or [Stanford's GGP](games.ggp.org).
 
-### **ggp-db**:
+### [ggp-db]
 
 Maintains the list of games, game metadata and game history for
 recent matches.  Is defined in a game-agnostic way and compatible with OpenAuth
@@ -87,7 +89,7 @@ representation.  Clients do not need to know how the metadata and replay data
 are stored, only how to retrieve and parse it as described in `ggdl-api`.  This
 is the reference implementation for database-related operations in the API.
 
-### **ggp-games**:
+### [ggp-games]
 
 A (private) repository containing the game rulesets and backup
 of the wiki content residing at [GGP Dojo](https://ggpdojo.com/games).  This is
@@ -101,7 +103,7 @@ that has been released and has a stable status.  Making game parsing a submit
 blocker sounds interesting but would be a challenge in this multi-repo setup.
 Maybe with a release binary of the ggdl-check binary?  Will consider it.
 
-### **ggp-site**:
+### [ggp-site]
 
 Web site frontend for ggpdojo.com and OAuth callback receiver.
 It exposes the interface for viewing current games, creating new ones or joining
@@ -112,15 +114,16 @@ deploy it from, but that dependency is at deployment time, not during build.
 It could be interesting to implement an SPA from within a game description... \
 This repo also has the FrontEnd server's github actions for staging a release.
 
-### **\*-client**:
+### **\*-client**
+
 A variety of compilation targets could exist, but the primary
-target will be `vue-client` so that a playable client can be embedded in the
+target will be [vue-client] so that a playable client can be embedded in the
 website alongside the wiki and public match listings.  Next planned are other
 targets such as `flutter-client` and `steamvr-client`, which may only need to
 depend on `ggdl-api`, as a reference implementations for clients that target a
 pre-compiled set of game definitions.
 
-### **ggdl-bot**:
+### [ggp-bot]
 
 Reference implementation for a competitive AI that can play
 most small games optimally and some large games decently.  Depends on `ggdl-api`
@@ -130,3 +133,20 @@ AI player but to accelerate the path for those who want to explore creating one.
 We will spend that time making a more effective tournament space so that the
 best reasoning engine may emerge.
 This repo also has the github actions for staging a release in its cluster.
+
+
+[ggdl]: https://github.com/SymbolNotFound/ggdl
+
+[ggdl-api]: https://github.com/SymbolNotFound/ggdl-api
+
+[ggdl-gm]: https://github.com/SymbolNotFound/ggdl-gm
+
+[ggp-db]: https://github.com/SymbolNotFound/ggp-db
+
+[ggp-games]: https://github.com/SymbolNotFound/ggp-games
+
+[ggp-site]:  https://github.com/SymbolNotFound/ggp-site
+
+[vue-client]:  https://github.com/SymbolNotFound/vue-client
+
+[ggp-bot]:  https://github.com/SymbolNotFound/ggp-bot
