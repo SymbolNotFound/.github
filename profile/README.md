@@ -42,7 +42,7 @@ graph LR;
 
 ## Summary of repositories
 
-### **ggdl**: (or, *GDL+G*)
+### **ggdl**: Generative Game Description Language
 
 A parser and compiler for .ggd source files (GGDL's file type), a superset of
 GDL and compatible with several of the language's variants.  It can compile
