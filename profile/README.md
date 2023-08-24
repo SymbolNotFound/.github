@@ -66,8 +66,8 @@ graph LR;
     ggdl/go-->ggdl-gm;
     ggp-db--->ggp-site;
     ggdl-api & ggdl/ts --> ggp-bot & vue-client;
-    vue-client <-.-> ggp-site;
-    vue-client <-.-> ggdl-gm;
+    vue-client -.-> ggp-site;
+    vue-client -.-> ggdl-gm;
     ggdl-api-->ggdl-gm;
     ggp-games--->ggp-site
 ```
