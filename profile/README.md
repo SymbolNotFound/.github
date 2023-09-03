@@ -64,12 +64,15 @@ when the site is launched later this year!
 graph LR;
     ggdl/go-->ggp-db;
     ggdl/go-->ggdl-gm;
+    ggp-auth-->terraform;
     ggp-db--->ggp-site;
-    ggdl-api & ggdl/ts --> ggp-bot & vue-client;
-    vue-client -.-> ggp-site;
-    vue-client -.-> ggdl-gm;
+    ggdl-api & ggdl/ts --> ggdl-bot & vue-client;
+    vue-client <-.-> ggp-site;
+    vue-client <-.-> ggdl-gm;
     ggdl-api-->ggdl-gm;
-    ggp-games--->ggp-site
+    ggp-games--->ggp-site;
+    ggp-site-->terraform;
+    ggdl-gm-->terraform;
 ```
 
 ## Summary of repositories
