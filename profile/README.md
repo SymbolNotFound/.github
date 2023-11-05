@@ -62,11 +62,11 @@ when the site is launched later this year!
 
 ```mermaid
 graph LR;
-    ggdl/go-->ggp-db;
-    ggdl/go-->ggdl-gm;
+    ggdl-go-->ggp-db;
+    ggdl-go-->ggdl-gm;
     ggp-auth-->terraform;
     ggp-db--->ggp-site;
-    ggdl-api & ggdl/ts --> ggdl-bot & vue-client;
+    ggdl-api & ggdl-ts --> ggdl-bot & vue-client;
     vue-client <-.-> ggp-site;
     vue-client <-.-> ggdl-gm;
     ggdl-api-->ggdl-gm;
@@ -77,12 +77,14 @@ graph LR;
 
 ## Summary of repositories
 
-### [ggdl]: Generative Game Description Language
+### [ggdl-go]: GGDL parser in Go
 
 A parser and compiler for .ggd source files (GGDL's file type), a superset of
-GDL and compatible with several of the language's variants.  It can compile
-GGDL down to GDL-II (or, if necessary, rtGDL) and will compile to GDL-I if able.
-Contains a parser/compiler for both golang and TypeScript, developed in tandem.
+GDL and with the semantics of many of the language's variants.  It can compile
+GGDL down to GDL-II (or, in some cases, rtGDL) and will compile to GDL-I if able.
+There is an alternate repository, [gdl-ts], for parsing and evaluating GDL game
+descriptions and providing hooks for player actions and game updates.
+
 This repo has github actions for compiling the parser and benchmarking its parse
 times for priority operations (e.g. ground relations used in player moves).
 
@@ -94,6 +96,7 @@ defined as a separate repo because some environments do not need an entire GGDL
 compiler to play (e.g., the game clients that have been code generated from
 rules).  This is not to say that clients should not depend on `ggdl`, but that
 there are benefits to building clients that only need to depend on the API.
+
 This repo has no github actions, but has hooks into build and test that check
 for internal consistency.
 
@@ -102,10 +105,11 @@ for internal consistency.
 A golang service adhering to the Game Manager for hosting games.
 It coordinates the simultaneous play of moves, shares game updates with players
 and spectators, and validates legal play adhering to the game's rules.  Though
-it depends on `ggdl/go` so that it can arbitrate any bespoke games, some of the
+it depends on `ggdl-go` so that it can arbitrate any bespoke games, some of the
 game rules may be a compiled into go plugins for native compilation into Go,
 compiled into an intermediate notation that the service can snapshot and read
 back in when play resumes.
+
 This repo has github actions for staging the GM to be released.
 
 The protocol deviates from that of IGGPC described in [GDL](https://www.cs.uic.edu/~hinrichs/papers/love2006general.pdf),
@@ -130,41 +134,45 @@ the backing store for games while they are in progress and is periodically
 synced with the servers running the ggpdojo site.  Game metadata will include
 a `'status'` property indicating whether it should be shown in the index or only
 available to beta testers, etc.
-This has no github actions; part of the release of any component that reads the
-game definitions (e.g. GM, clients), that may block if unable to parse a game
+
+This has no github actions.  The release of any component that reads the
+game definitions (GGP-GM & clients) may block if unable to parse a game
 that has been released and has a stable status.  Making game parsing a submit
-blocker sounds interesting but would be a challenge in this multi-repo setup.
-Maybe with a release binary of the ggdl-check binary?  Will consider it.
+blocker sounds interesting but would be a challenge in this multi-repo setup
+and without a stable game player, game GM and fuzzer.  Maybe with a release
+binary of the ggdl-check binary?  We will consider it.
 
 ### [ggp-site]
 
-Web site frontend for ggpdojo.com and OAuth callback receiver.
-It exposes the interface for viewing current games, creating new ones or joining
+Web site frontend for ggpdojo.com and OAuth callback receiver, presenting the
+interface for viewing current games, creating new lobbies, or joining with
 a lobby invitation.  Thus it only needs to depend on `ggdl-api` and `ggp-db`, it
 is the GM's responsibility to arbitrate game logic decisions.  There is also a
-dependency on `vue-client` because ggpdojo.com is a convenient location to
-deploy it from, but that dependency is at deployment time, not during build.
-It could be interesting to implement an SPA from within a game description... \
-This repo also has the FrontEnd server's github actions for staging a release.
+dependency on `ggp-client` because ggpdojo.com is a convenient location to
+deploy it from.  However, that dependency is at deployment time, not during build.
 
-### **\*-client**
+There are github actions for staging a release of the Frontend server.
 
-A variety of compilation targets could exist, but the primary
-target will be [vue-client] so that a playable client can be embedded in the
-website alongside the wiki and public match listings.  Next planned are other
-targets such as `flutter-client` and `steamvr-client`, which may only need to
-depend on `ggdl-api`, as a reference implementations for clients that target a
-pre-compiled set of game definitions.
+### [ggp-client]
+
+This is a quasar- and Vue3-based Single Page Application of a client for human
+players in GGP Dojo.  Because quasar allows for building several modalities,
+a variety of compilation targets could exist.  Initial target platforms are web
+browser and mobile apps.  Desktop clients are possible by extending this repo
+via electron and cordova, however for some platforms it may be easier or more
+performant to only depend on the protocol schema for the client, see `ggdl-api`.
+
+There are no github actions, this repo is built and included in the images
+deployed for the Frontend (ggp-site).
 
 ### [ggp-bot]
 
-Reference implementation for a competitive AI that can play
-most small games optimally and some large games decently.  Depends on `ggdl-api`
-for joining and playing games, depends on `ggdl/ts` for compiling a game into an
-intermediate representation.  The intent is not to have the most competitive
-AI player but to accelerate the path for those who want to explore creating one.
-We will spend that time making a more effective tournament space so that the
-best reasoning engine may emerge.
+Reference implementation for a competitive AI that can play most small games
+optimally and some large games decently.  Depends on `ggdl-api` for joining
+and playing games, depends on `ggdl-ts` for compiling into an intermediate
+representation.  The intent here is not to have the most competitive AI player
+but to accelerate the path for those who want to explore creating one.
+
 This repo also has the github actions for staging a release in its cluster.
 
 
@@ -180,6 +188,6 @@ This repo also has the github actions for staging a release in its cluster.
 
 [ggp-site]:  https://github.com/SymbolNotFound/ggp-site
 
-[vue-client]:  https://github.com/SymbolNotFound/vue-client
+[ggp-client]:  https://github.com/SymbolNotFound/vue-client
 
 [ggp-bot]:  https://github.com/SymbolNotFound/ggp-bot
