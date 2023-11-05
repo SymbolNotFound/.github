@@ -1,5 +1,41 @@
 # Contributing guidelines for repositories in the Symbol Not Found organization
 
+##  Branching Workflow
+
+The repositories follow a lightweight workflow with few mainline branches plus
+many short-term branches for features and patches.  The workflow follows the same
+outline as documented in [GitHub flow].
+
+Each repository has a `main` branch which remains stable.  That is, it should
+always be possible to deploy to production from the `main` branch of each repo.
+Continuous Integration on the `dev` branch and merge actions on the `main` branch
+will keep some errors in check.  Builds are not continuously deployed to production
+but can be deployed to integration from a dev branch.  Deploying with DEBUG mode
+and symbols can only be done by an individual, but only automation-built artifacts
+should be allowed to be deployed to production.
+
+For each feature, bugfix or version update:
+
+ * create a dedicated branch (fork from `main` or `dev`)
+ * make changes on your branch (only include what is needed, add tests, split commits)
+ * create a pull request (follow the repository's template for PRs if one exists)
+ * address review comments (may involve multiple commit round-trips)
+   * respect each other, see [CODE_OF_CONDUCT.md]
+ * merge your pull request after meeting all branch protections
+   * address merge conflicts if another PR was merged since HEAD (and retain history)
+ * delete the feature/fix branch after merging
+
+**One critical rule:** Do _NOT_ git rebase on commits that have already been pushed
+or shared on github (or any remote repository).  Rebase is only for cleaning up a
+local commit history before merging it into a shared team branch.  This will save
+a lot of headache.
+
+For a great video about git version control concepts, see [Git for Professionals]
+Tutorial.  It is a good refresher, and a good presentation of intermediate concepts
+like rebase vs merge.
+
+Also note that GitHub rebase is not the same as git rebase.
+
 ## Steps for creating good issues and/or pull requests
 
 Any Pull Request of significant size or functionality should include a reference
@@ -25,3 +61,8 @@ are included in each repository's `README.md`
 
 See the [CODE_OF_CONDUCT.md]() for this organization's Code of Conduct all
 contributers must agree to.  It is based on the same code of conduct as github.
+
+
+[Git for Professionals Tutorial]: https://youtu.be/Uszj_k0DGsg
+
+[GitHub flow]: https://docs.github.com/en/get-started/quickstart/github-flow
