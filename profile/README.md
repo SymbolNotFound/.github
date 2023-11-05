@@ -176,7 +176,7 @@ but to accelerate the path for those who want to explore creating one.
 This repo also has the github actions for staging a release in its cluster.
 
 
-[ggdl]: https://github.com/SymbolNotFound/ggdl
+[ggdl-go]: https://github.com/SymbolNotFound/ggdl-go
 
 [ggdl-api]: https://github.com/SymbolNotFound/ggdl-api
 
@@ -188,6 +188,6 @@ This repo also has the github actions for staging a release in its cluster.
 
 [ggp-site]:  https://github.com/SymbolNotFound/ggp-site
 
-[ggp-client]:  https://github.com/SymbolNotFound/vue-client
+[ggp-client]:  https://github.com/SymbolNotFound/ggp-client
 
 [ggp-bot]:  https://github.com/SymbolNotFound/ggp-bot
