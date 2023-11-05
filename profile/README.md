@@ -9,7 +9,7 @@ with a board & pieces, or cards, or dice, or with symbols, or all of those, game
 perfect knowledge and those that are only partially seen, games that expect knowledge
 had by the players before the game started... and some idiosyncratic games as well...
 with a little over 200 games it barely scratches the surface of all published games
-but it covers nearly as broad an area:
+but it covers almost as broad an area:
 
 https://docs.google.com/spreadsheets/d/1Qcg707g7wGSvr1XKr5UNmLDlcYtoZ3GTNwtUPL3bo5U
 
@@ -18,7 +18,7 @@ The goal is to implement several of these (as many as we can!) in a common groun
 decks, etc.  The initial motivation was to have a system from which a human-friendly
 game interface could be code-generated (including hints for assistive technology, as
 well as the entire client/server protocol for network play), along with a playable AI.
-Games can be played (human | AI) vs (human | AI) for all the roles defined in the game.
+Games can be played (human or AI) vs (human or AI) for all roles defined in the game.
 
 The motivation has expanded to include other reasons -- there are games on that list
 which have been almost entirely lost, a couple of games are only guesses, their rules
@@ -31,10 +31,10 @@ Building a general game description language and collection of games is another 
 help preserve games, both ancient and modern, and make them widely accessible.
 
 The initial motivation of code-generating the play-protocol and interface was also to
-provide a testing ground for the design and fine-tuning of new games.  Playtesting a
-new game takes precious (seasoned game player) hours and must be repeated after every
+provide a testing ground for the design and fine-tuning of new games.  Play-testing a
+new game takes precious hours of seasoned game players and must be repeated after every
 gameplay-balance adjustment.  By defining the game rules as logical relations, there
-is the immediate benefit of avoiding an entire class of bugs from accidents in editing
+is the immediate benefit of avoiding an entire class of bugs from accidents of editing
 the client and server implementations.  There is the ability to play against an AI that
 is at least capable of legal moves and makes occasionally clever moves.  There are
 automated metrics that can be derived from equipment & rule complexity, the initiative
@@ -66,7 +66,7 @@ graph LR;
     ggdl-go-->ggdl-gm;
     ggp-auth-->terraform;
     ggp-db--->ggp-site;
-    ggdl-api & ggdl-ts --> ggdl-bot & vue-client;
+    ggdl-api & gdl-ts --> ggdl-bot & vue-client;
     vue-client <-.-> ggp-site;
     vue-client <-.-> ggdl-gm;
     ggdl-api-->ggdl-gm;
