@@ -11,10 +11,11 @@ always be possible to deploy to production from the `main` branch of each repo.
 Continuous Integration on the `dev` branch and merge actions on the `main` branch
 will keep some errors in check.  Builds are not continuously deployed to production
 but can be deployed to integration from a dev branch.  Deploying with DEBUG mode
-and symbols can only be done by an individual, but only automation-built artifacts
-should be allowed to be deployed to production.
+and symbols can only be done by an individual.  To protect against accidentally
+leaking DEBUG symbols and functionality to production, only automation-built artifacts
+should be allowed to be deployed to production (safeguarded by deployment automation).
 
-For each feature, bugfix or version update:
+To contribute a change, for each feature/bugfix or version update follow these steps:
 
  * create a dedicated branch (fork from `main` or `dev`)
  * make changes on your branch (only include what is needed, add tests, split commits)
@@ -22,19 +23,16 @@ For each feature, bugfix or version update:
  * address review comments (may involve multiple commit round-trips)
    * respect each other, see [CODE_OF_CONDUCT.md]
  * merge your pull request after meeting all branch protections
-   * address merge conflicts if another PR was merged since HEAD (and retain history)
+   * address merge conflicts if another PR was merged since HEAD (retain history)
  * delete the feature/fix branch after merging
 
 **One critical rule:** Do _NOT_ git rebase on commits that have already been pushed
 or shared on github (or any remote repository).  Rebase is only for cleaning up a
-local commit history before merging it into a shared team branch.  This will save
-a lot of headache.
+local commit history before merging it into a shared team branch.
 
-For a great video about git version control concepts, see [Git for Professionals]
-Tutorial.  It is a good refresher, and a good presentation of intermediate concepts
-like rebase vs merge.
-
-Also note that GitHub rebase is not the same as git rebase.
+For a great video about git version control concepts, especially for rebase vs merge,
+see [Git for Professionals] Tutorial.  Also note that GitHub rebase is not the same
+as git rebase.
 
 ## Steps for creating good issues and/or pull requests
 
