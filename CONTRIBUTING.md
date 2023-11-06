@@ -21,7 +21,7 @@ To contribute a change, for each feature/bugfix or version update follow these s
  * make changes on your branch (only include what is needed, add tests, split commits)
  * create a pull request (follow the repository's template for PRs if one exists)
  * address review comments (may involve multiple commit round-trips)
-   * respect each other, see [CODE_OF_CONDUCT.md]
+   * respect each other, see [CODE_OF_CONDUCT.md]()
  * merge your pull request after meeting all branch protections
    * address merge conflicts if another PR was merged since HEAD (retain history)
  * delete the feature/fix branch after merging
