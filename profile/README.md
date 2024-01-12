@@ -62,45 +62,57 @@ when the site is launched later this year!
 
 ```mermaid
 graph LR;
-    ggdl-go-->ggp-db;
-    ggdl-go-->ggdl-gm;
+    ggdl-->ggp-db;
+    ggdl-->ggp-gm;
     ggp-auth-->terraform;
     ggp-db--->ggp-site;
-    ggdl-api & gdl-ts --> ggdl-bot & vue-client;
+    ggdl-api & ts-gdl --> ggdl-bot & vue-client;
     vue-client <-.-> ggp-site;
-    vue-client <-.-> ggdl-gm;
-    ggdl-api-->ggdl-gm;
+    vue-client <-.-> ggp-gm;
+    ggdl-api-->ggp-gm;
     ggp-games--->ggp-site;
     ggp-site-->terraform;
-    ggdl-gm-->terraform;
+    ggp-gm-->terraform;
 ```
 
 ## Summary of repositories
 
-### [ggdl-go]: GGDL parser in Go
+### [ggdl]: GGDL parser in Go
 
 A parser and compiler for .ggd source files (GGDL's file type), a superset of
-GDL and with the semantics of many of the language's variants.  It can compile
-GGDL down to GDL-II (or, in some cases, rtGDL) and will compile to GDL-I if able.
+GDL and with the semantics of many of the language's variants.  It can transpile
+GGDL into GDL-II (or, in some cases, rtGDL) and will compile to GDL-I if able.
 There is an alternate repository, [gdl-ts], for parsing and evaluating GDL game
 descriptions and providing hooks for player actions and game updates.
 
 This repo has github actions for compiling the parser and benchmarking its parse
 times for priority operations (e.g. ground relations used in player moves).
 
+### [ts-gdl]: GDL and GGDL parser in TypeScript
+
+A parser and compiler for GGDL games as well as GDL-KIF and GDL-HRF formats of
+Stanford's GDL language.  Intended for use by the Vue3 client but also suitable
+for standalone frontends that aim for compatibility with multiple games, including
+third-party implementations of competitive AI players.  Includes rule processing
+and a basic Knowledge Base representation.
+
+This repo will include build and packaging rules for making the library available
+for distribution via NPM.  Should also include github actions for running the test
+suite as a pre-merge step.
+
 ### [ggdl-api]
 
-The common protocols and data types that all players (human and
-AI), as well as game master and lobby interfaces, use to interact.  These are
+The common protocols and data types that all players (both human and AI),
+as well as game master and lobby interfaces, use to interact.  These are
 defined as a separate repo because some environments do not need an entire GGDL 
-compiler to play (e.g., the game clients that have been code generated from
+compiler to operate (e.g., the game clients that have been code generated from
 rules).  This is not to say that clients should not depend on `ggdl`, but that
 there are benefits to building clients that only need to depend on the API.
 
 This repo has no github actions, but has hooks into build and test that check
 for internal consistency.
 
-### [ggdl-gm]
+### [ggp-gm]
 
 A golang service adhering to the Game Manager for hosting games.
 It coordinates the simultaneous play of moves, shares game updates with players
