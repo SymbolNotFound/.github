@@ -66,7 +66,7 @@ graph LR;
     ggdl-->ggp-gm;
     ggp-auth-->terraform;
     ggp-db--->ggp-site;
-    ggdl-api & ts-gdl --> ggdl-bot & vue-client;
+    ggdl-api & ts-gdl --> ggp-bot & vue-client;
     vue-client <-.-> ggp-site;
     vue-client <-.-> ggp-gm;
     ggdl-api-->ggp-gm;
@@ -127,7 +127,7 @@ This repo has github actions for staging the GM to be released.
 The protocol deviates from that of IGGPC described in [GDL](https://www.cs.uic.edu/~hinrichs/papers/love2006general.pdf),
 mainly so that it can be easier for a human to interact with via a browser,
 but it should be possible to create a compatibility layer to satisfy any bot
-that had been developed specifically for IGGPC or [Stanford's GGP](games.ggp.org).
+that had been developed specifically for IGGPC or [Stanford's GGP](https://games.ggp.org).
 
 ### [ggp-db]
 
@@ -165,7 +165,7 @@ deploy it from.  However, that dependency is at deployment time, not during buil
 
 There are github actions for staging a release of the Frontend server.
 
-### [ggp-client]
+### [vue-client]
 
 This is a quasar- and Vue3-based Single Page Application of a client for human
 players in GGP Dojo.  Because quasar allows for building several modalities,
@@ -181,18 +181,20 @@ deployed for the Frontend (ggp-site).
 
 Reference implementation for a competitive AI that can play most small games
 optimally and some large games decently.  Depends on `ggdl-api` for joining
-and playing games, depends on `ggdl-ts` for compiling into an intermediate
+and playing games, depends on `ts-gdl` for compiling into an intermediate
 representation.  The intent here is not to have the most competitive AI player
 but to accelerate the path for those who want to explore creating one.
 
 This repo also has the github actions for staging a release in its cluster.
 
 
-[ggdl-go]: https://github.com/SymbolNotFound/ggdl-go
+[ggdl]: https://github.com/SymbolNotFound/ggdl
+
+[ts-gdl]: https://github.com/SymbolNotFound/ts-gdl
 
 [ggdl-api]: https://github.com/SymbolNotFound/ggdl-api
 
-[ggdl-gm]: https://github.com/SymbolNotFound/ggdl-gm
+[ggp-gm]: https://github.com/SymbolNotFound/ggp-gm
 
 [ggp-db]: https://github.com/SymbolNotFound/ggp-db
 
@@ -200,6 +202,6 @@ This repo also has the github actions for staging a release in its cluster.
 
 [ggp-site]:  https://github.com/SymbolNotFound/ggp-site
 
-[ggp-client]:  https://github.com/SymbolNotFound/ggp-client
+[vue-client]:  https://github.com/SymbolNotFound/vue-client
 
 [ggp-bot]:  https://github.com/SymbolNotFound/ggp-bot
