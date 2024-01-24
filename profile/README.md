@@ -88,7 +88,7 @@ descriptions and providing hooks for player actions and game updates.
 This repo has github actions for compiling the parser and benchmarking its parse
 times for priority operations (e.g. ground relations used in player moves).
 
-### [ts-gdl]: GDL and GGDL parser in TypeScript
+### [ts-gdl]: GDL and μGGDL parser in TypeScript
 
 A parser and compiler for GGDL games as well as GDL-KIF and GDL-HRF formats of
 Stanford's GDL language.  Intended for use by the Vue3 client but also suitable
