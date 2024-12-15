@@ -9,9 +9,7 @@ with a board & pieces, or cards, or dice, or with symbols, or all of those, game
 perfect knowledge and those that are only partially seen, games that expect knowledge
 had by the players before the game started... and some idiosyncratic games as well...
 with a little over 200 games it barely scratches the surface of all published games
-but it covers almost as broad an area:
-
-https://docs.google.com/spreadsheets/d/1Qcg707g7wGSvr1XKr5UNmLDlcYtoZ3GTNwtUPL3bo5U
+but it covers almost as broad an area.
 
 The goal is to implement several of these (as many as we can!) in a common grounding
 -- a logic-language extension of GDL with added semantics for boards, equipment, dice,
@@ -83,7 +81,9 @@ A parser and compiler for .gel source files (GEL's file type), a superset of
 GDL and with the semantics of many of the language's variants.  It can transpile
 GEL into GDL-II (possibly also rtGDL TBD) and will compile to GDL-I if able.
 There is an alternate repository, [gdl-ts], for parsing and evaluating GDL game
-descriptions and providing hooks for player actions and game updates.
+descriptions and providing hooks for player actions and game updates.  GEL can
+compile down to GDL which many existing General Game Players can also already
+interpret.
 
 This repo has github actions for compiling the parser and benchmarking its parse
 times for priority operations (e.g. ground relations used in player moves).
