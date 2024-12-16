@@ -12,9 +12,13 @@ export default defineConfig({
       { text: 'GitHub', link: 'https://github.com/SymbolNotFound' },
     ],
 
-    sidebar: []
+    sidebar: [],
     //socialLinks: [
     //  { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
     //]
+
+    footer: {
+      copyright: "Copyright &copy; 2024 Symbol Not Found L.L.C.",
+    }
   }
 })
