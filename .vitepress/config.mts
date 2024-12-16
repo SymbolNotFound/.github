@@ -18,7 +18,8 @@ export default defineConfig({
     //]
 
     footer: {
-      copyright: "Copyright &copy; 2024 Symbol Not Found L.L.C.",
+      message: "This is a super early draft! check back again for links and discussion.",
+      copyright: "Copyright &copy; 2024 Symbol Not Found",
     }
   }
 })
