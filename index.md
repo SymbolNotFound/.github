@@ -6,11 +6,12 @@ hero:
   tagline: "Organization Homepage"
 ---
 
-TODO abbreviated Mission Statement
 
-# Works in Progress
+2024 has been a year of research and development &ndash; existing General Game
+Playing systems studied and compared, limitations on the rules-based languages 
+and variations on game/event loop design.  The following are in-progress works
+that include a new programming language and demonstrations of its use.
 
-> ...
 
 ## GEL: Goal Expression Language
 
@@ -24,7 +25,7 @@ rules system with terminating conditions (under reasonable design constraints).
 
 ## Applications of GEL
 
-Some initial applications of this programming language to demonstrate potential:
+Some initial applications of this programming language to demonstrate its potential:
 
 ### GGP Dojo
 
@@ -61,9 +62,13 @@ manager cannot expose any knowledge about the unviewed cards in a deck.
 Decks are represented as a unique, g&ouml;delized, representation that makes a
 uniform distribution straightforward to compute for a deck of any size.  
 
+
 ### Calvinball
 
 A game development game, where players can collaboratively add and edit rules.
+This uses the game-simulating environment as a simulation itself, making a game
+of making games and providing an interactive development environment for logical
+programming that has never been attempted before.
 
 
 ---
